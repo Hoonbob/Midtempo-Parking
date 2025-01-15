@@ -23,7 +23,11 @@
             cursor: pointer;
             background-color: white;
         }
-        .active {
+        .active-available {
+            border-color: green;
+            font-weight: bold;
+        }
+        .active-not-available {
             border-color: red;
             font-weight: bold;
         }
@@ -31,7 +35,7 @@
 </head>
 <body>
     <h1>주차 가능 현황</h1>
-    <button class="button active" id="available" onclick="setParkingStatus('available')">주차 가능</button>
+    <button class="button" id="available" onclick="setParkingStatus('available')">주차 가능</button>
     <button class="button" id="not-available" onclick="setParkingStatus('not-available')">주차 불가</button>
 
     <script>
@@ -40,12 +44,12 @@
             const notAvailableButton = document.getElementById('not-available');
             
             if (status === 'available') {
-                availableButton.classList.add('active');
-                notAvailableButton.classList.remove('active');
+                availableButton.classList.add('active-available');
+                notAvailableButton.classList.remove('active-not-available');
                 localStorage.setItem('parkingStatus', 'available');
             } else {
-                notAvailableButton.classList.add('active');
-                availableButton.classList.remove('active');
+                notAvailableButton.classList.add('active-not-available');
+                availableButton.classList.remove('active-available');
                 localStorage.setItem('parkingStatus', 'not-available');
             }
         }
