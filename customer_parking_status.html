@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>주차 가능 여부 확인</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        h1 {
+            color: #333;
+        }
+        #status {
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>주차 가능 여부</h1>
+    <div id="status">불러오는 중...</div>
+
+    <script>
+        const statusDiv = document.getElementById('status');
+        const parkingStatus = localStorage.getItem('parkingStatus') || 'available';
+
+        if (parkingStatus === 'available') {
+            statusDiv.textContent = "현재 주차가 가능합니다.";
+            statusDiv.style.color = "green";
+        } else {
+            statusDiv.textContent = "현재 주차가 불가능합니다.";
+            statusDiv.style.color = "red";
+        }
+    </script>
+</body>
+</html>
