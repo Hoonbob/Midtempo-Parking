@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>주차 가능 현황 설정</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        h1 {
+            color: #333;
+        }
+        .button {
+            font-size: 18px;
+            padding: 10px 20px;
+            margin: 10px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: white;
+        }
+        .active {
+            border-color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>주차 가능 현황</h1>
+    <button class="button active" id="available" onclick="setParkingStatus('available')">주차 가능</button>
+    <button class="button" id="not-available" onclick="setParkingStatus('not-available')">주차 불가</button>
+
+    <script>
+        function setParkingStatus(status) {
+            const availableButton = document.getElementById('available');
+            const notAvailableButton = document.getElementById('not-available');
+            
+            if (status === 'available') {
+                availableButton.classList.add('active');
+                notAvailableButton.classList.remove('active');
+                localStorage.setItem('parkingStatus', 'available');
+            } else {
+                notAvailableButton.classList.add('active');
+                availableButton.classList.remove('active');
+                localStorage.setItem('parkingStatus', 'not-available');
+            }
+        }
+
+        // 초기 상태 설정
+        const savedStatus = localStorage.getItem('parkingStatus') || 'available';
+        setParkingStatus(savedStatus);
+    </script>
+</body>
+</html>
